@@ -3,12 +3,11 @@ import player from "./modules/player.js"
 let canv = document.getElementById('canv');
 let ctx = canv.getContext('2d');
 
-let speed = 5;
-let side = "none"
+let side = null
 
 let moving = {
-    start: {},
-    move: {},
+    start: {X: null, y: null},
+    move: {X: null, y: null},
 }
 
 canv.width = 375
@@ -21,15 +20,33 @@ canv.addEventListener("touchstart",(e)=>{
 canv.addEventListener("touchmove",(e)=>{
     moving.move.x = 375 * ((e.touches[0].clientX-e.target.offsetLeft)/canv.offsetWidth);
     moving.move.y = 667 * ((e.touches[0].clientY-e.target.offsetTop)/canv.offsetHeight);
-    if (moving.move.x>moving.start.x)
-        side = "right"
-    else 
-        side = "left"
-    player.move(side);
-    // console.log(e);
-    // console.log(moving);
-    // console.log(side);
-    // console.log(e.touches[0].clientX, e.touches[0].clientY);
+
+    if (moving.start.x === null) {
+        return;
+      }
+     
+      if (moving.start.y === null) {
+        return;
+      }
+
+    let diffX = moving.start.x - moving.move.x;
+    let diffY = moving.start.y - moving.move.y;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 0) {
+          side = "left"
+        } else {
+            side = "right"
+        }  
+      } else {
+        if (diffY > 0) {
+          side = "top"
+        } else {
+          side = "down"
+        }  
+      }
+
+      player.move(side)
 })
 
 function start() {
@@ -38,4 +55,4 @@ function start() {
     
     requestAnimationFrame(start);
 }
-start()
+start();

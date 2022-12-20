@@ -13,6 +13,10 @@ class gameObj {
             this.data.coords.x+=this.data.coords.speed
         else if (side === "left")
             this.data.coords.x-=this.data.coords.speed
+        else if (side === "top")
+            this.data.coords.y-=this.data.coords.speed
+        else if (side === "down")
+            this.data.coords.y+=this.data.coords.speed
     }
 }
 
