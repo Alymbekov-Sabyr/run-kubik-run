@@ -1,4 +1,5 @@
 import player from "./modules/player.js"
+import generator from "./modules/enemies.js"
 
 let canv = document.getElementById('canv');
 let ctx = canv.getContext('2d');
@@ -13,6 +14,7 @@ let moving = {
 canv.width = 375
 canv.height = 667
 
+// move
 canv.addEventListener("touchstart",(e)=>{
     moving.start.x = 375 * ((e.touches[0].clientX-e.target.offsetLeft)/canv.offsetWidth);
     moving.start.y = 667 * ((e.touches[0].clientY-e.target.offsetTop)/canv.offsetHeight);
@@ -48,11 +50,27 @@ canv.addEventListener("touchmove",(e)=>{
 
       player.move(side)
 })
-
+// enemies generator
+let arr = [];
+setInterval(()=>{
+    for (const el of generator( Math.floor(Math.random() * (5 - 2) + 2))) {
+        arr.push(el)
+    }
+    
+}, 1000)
+// game starter
 function start() {
     ctx.clearRect(0, 0, 375, 667)
     player.draw(ctx);
-    
+if(arr!=[]) {
+    for (const el of arr) {
+        if (el.data.coords.y>canv.height) {
+            arr.splice(arr.indexOf(el),1)
+        }
+            el.draw(ctx)
+        el.move("down")
+    }
+}
     requestAnimationFrame(start);
 }
 start();

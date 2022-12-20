@@ -9,7 +9,8 @@ let player = new gameObj(
   {
     color: "#" + Math.floor(Math.random() * 16777215).toString(16),
     coords: {
-      speed: 5,
+      speedX: 4,
+      speedY: 6,
       x: (375/2)-25,
       y: 547
     },

@@ -10,13 +10,13 @@ class gameObj {
     }
     move(side) {
         if (side === "right")
-            this.data.coords.x+=this.data.coords.speed
+            this.data.coords.x+=this.data.coords.speedX
         else if (side === "left")
-            this.data.coords.x-=this.data.coords.speed
+            this.data.coords.x-=this.data.coords.speedX
         else if (side === "top")
-            this.data.coords.y-=this.data.coords.speed
+            this.data.coords.y-=this.data.coords.speedY
         else if (side === "down")
-            this.data.coords.y+=this.data.coords.speed
+            this.data.coords.y+=this.data.coords.speedY
     }
 }
 
