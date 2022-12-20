@@ -12,8 +12,24 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
-
+.lose{
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+}
+button {
+    width: 100%;
+    font-size: 2em;
+}
 canvas {
     background: white;
     
