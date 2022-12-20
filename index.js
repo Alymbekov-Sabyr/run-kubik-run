@@ -74,7 +74,6 @@ setInterval(()=>{
     for (const el of generated) {
         arr.push(el)
     }
-    console.log(timer);
 }, timer)
 setInterval(()=>{
     if (end === "start")
@@ -83,7 +82,6 @@ setInterval(()=>{
 setInterval(()=>{
     dif+=up;
     up+=0.07;
-    console.log(dif);
 },5000*dif)
 // game starter
 function start() {
